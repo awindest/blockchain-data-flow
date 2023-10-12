@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--                                  
+╭━━╮╱╱╱╱╭╮╱╱╱╱╱╭╮╱╭╮╱╱╱╱╱╭╮            ━╮ ╭━
+╰┫┣╯╱╱╱╱┃┃╱╱╱╱╭╯╰╮┃┃╱╱╱╱╱┃┃             | |
+╱┃┃╭━╮╭━╯┣━━┳━┻╮╭╯┃┃╱╱╭━━┫╰━┳━━╮       ╱ o \
+╱┃┃┃╭╮┫╭╮┃┃━┫━━┫┃╱┃┃╱╭┫╭╮┃╭╮┃━━┫      ╱_____\
+╭┫┣┫┃┃┃╰╯┃┃━╋━━┃╰╮┃╰━╯┃╭╮┃╰╯┣━━┃     ╱    o  \  
+╰━━┻╯╰┻━━┻━━┻━━┻━╯╰━━━┻╯╰┻━━┻━━╯    (__o______)  
+
+Yet another science experiment from Indest Labs.
+
+Recommend viewing in Visual Source Code.
+-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Self-branding to gain employment">
+    <title>Why I Am Different in Comic Strip Format</title>
+
+    <link rel="icon" href="img/favicon.ico" />
+
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body>
+    <div>
+        <h1>
+            <p class='cBorder'>Blockchain Data Flow</p>
+        </h1>
+        <div id="keep-scrolling" class="scroll-wrapper">
+            <div id="animated-arrow" class="bounce-animation">
+                <p id="scroll">Scroll</p>
+                <svg width="40" height="10">
+                    <path d="M0,0L40,0L20,10Z" fill="#000" stroke="none" />
+                </svg>
+            </div>
+        </div> <!-- end of keep-scrolling -->
+    </div>
+    <div id="labs">
+        Indest Labs
+        <img style="float:right;height:2.5em;filter:contrast(75%);" src="./img/flask.svg" alt="Laboratory Flask" />
+    </div>
+
+    <div id="remaining"></div>
+
+
+
+    <img class="center panel" src="img/blockchain-data-flow.png" width="1480" style="border: solid 10px rgb(0, 0, 0);
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;padding:0px;margin-top:0;">
+
+    <h1>
+        <p class='cBorder center'>End of Blockchain infographic</p>
+    </h1>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+
+    gsap.registerPlugin(ScrollTrigger)
+    function init() {
+        const panels = document.querySelectorAll('.panel')
+
+        console.log('doin animations')
+
+        panels.forEach(panel => {
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: panel,
+                    start: "top 85%",
+                    end: "top top",
+                    markers: false,
+                    scrub: true
+                }
+            })
+            tl.fromTo(panel, { opacity: 0 },
+                { opacity: 1 })
+        })
+
+        let timeline = gsap.timeline()
+
+        timeline
+            .from('body', {
+                background: "#ffffff",
+                delay: 1,
+                duration: 1,
+                ease: 'none'
+            })
+            .fromTo(
+                ['h1', '.scroll-wrapper', '#labs'], {
+                opacity: 0,
+                y: -200
+            },
+                {
+                    opacity: 1, y: 0,
+                    duration: 0.6,
+                    ease: 'power1.out',
+                    delay: 2.0,
+                    stagger: .02
+                }
+                ,
+                '-=1'
+            )
+        //start (el position, screen position)
+        gsap.to('#title-container', {
+            opacity: 0, scrollTrigger: {
+                trigger: '#title-container',
+                start: 'top top',
+                end: 'bottom 50%',
+                scrub: true,
+                markers: false
+            }
+        })
+    }
+
+    window.addEventListener('load', function () {
+        init()
+    })
+
+</script>
+
+</html>
